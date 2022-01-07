@@ -1,0 +1,27 @@
+it is fork from https://github.com/fvrmatteo/TritonASTLLVMIRTranslator
+
+*WARNINGS: tested only linux(ubuntu 20.04)*
+
+how to compile lib?
+`
+clang -fPIC -shared Translator.cpp `llvm-config-10 --ldflags --cxxflags --libs core --system-libs`  -lboost_system -L<path to boost libraries> -ltriton -L <path to triton> -lcapstone -L<path to capstone> -o libtransTritonLLVM.so
+
+by sample cmd:
+
+clang -fPIC -shared Translator.cpp `llvm-config-10 --ldflags --cxxflags --libs core --system-libs`  -lboost_system -L/usr/lib/x86_64-linux-gnu -ltriton -L/home/user/Triton/build/src/ -lcapstone -L/home/user/capstone/build -o libtransTritonLLVM.so
+`
+
+how to compile C++ sample?
+`
+clang main.cpp `llvm-config-10 --ldflags --cxxflags --libs core --system-libs` -lboost_system -L<path to boost> -ltriton -L<path to triton> -ltransTritonLLVM -L<path to libtransTritonLLVM.so> -lstdc++ -o main
+
+by example:
+clang main.cpp `llvm-config-10 --ldflags --cxxflags --libs core --system-libs` -lboost_system -L/usr/lib/x86_64-linux-gnu -ltriton -L/home/user/Triton/build/src/ -ltransTritonLLVM -L /home/user/TritonASTLLVMIRTranslator/ -lstdc++ -o main
+`
+
+how to run C++ sample?
+`
+ LD_LIBRARY_PATH=<absolute path to libtransTritonLLVM.so> ./main
+by example:
+ LD_LIBRARY_PATH=/home/user/TritonASTLLVMIRTranslator/ ./main
+`
