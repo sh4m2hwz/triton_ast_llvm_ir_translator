@@ -1,6 +1,6 @@
 it is fork from https://github.com/fvrmatteo/TritonASTLLVMIRTranslator
 
-*WARNINGS: tested only linux(ubuntu 20.04)*
+*WARNINGS: tested only linux(ubuntu 20.04) and only llvm and clang version 10*
 
 how to compile lib?
 `
